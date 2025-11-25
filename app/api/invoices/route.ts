@@ -3,20 +3,25 @@ import { getSession } from "@/lib/auth";
 import { createInvoice, listInvoices } from "@/lib/mock-db";
 
 export async function GET() {
-  const session = getSession();
-  if (!session) {
+  const session = await getSession();   // ✅ FIXED
+
+  if (!session || !session.user) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
+
   const invoices = listInvoices(session.user.id);
   return NextResponse.json({ invoices });
 }
 
 export async function POST(request: Request) {
-  const session = getSession();
-  if (!session) {
+  const session = await getSession();   // ✅ FIXED
+
+  if (!session || !session.user) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
+
   const payload = await request.json();
+
   const invoice = createInvoice({
     workerId: session.user.id,
     clientName: payload.clientName,
@@ -27,5 +32,6 @@ export async function POST(request: Request) {
     items: payload.items ?? [],
     attachments: payload.attachments ?? [],
   });
+
   return NextResponse.json({ invoice }, { status: 201 });
 }

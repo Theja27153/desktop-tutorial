@@ -5,9 +5,10 @@ import { StatusBadge } from "@/components/ui/StatusBadge";
 import { formatCurrency } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 
-export default function InvoiceListPage() {
-  const session = getSession();
-  if (!session) return null;
+export default async function InvoiceListPage() {
+  const session = await getSession(); // ← await added
+  if (!session || !session.user) return null; // ← safe check
+
   const invoices = listInvoices(session.user.id);
 
   return (
