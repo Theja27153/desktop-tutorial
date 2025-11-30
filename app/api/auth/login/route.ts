@@ -19,7 +19,6 @@ export async function POST(request: Request) {
     );
   }
 
-  // FIX: await required
-  const session = await createSession(user);
-return NextResponse.json({ user: session.user });
+  const session = createSession(user);
+  return NextResponse.json({ user: session.user });
 }

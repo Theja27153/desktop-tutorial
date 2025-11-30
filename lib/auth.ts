@@ -3,10 +3,9 @@ import { cookies } from "next/headers";
 import { users } from "@/data/users";
 import { AuthSession, User } from "@/types";
 import { SESSION_COOKIE_NAME } from "@/lib/constants";
+
 const SESSION_DURATION_HOURS = 8;
-
 const sessions = new Map<string, AuthSession>();
-
 const SESSION_COOKIE = SESSION_COOKIE_NAME;
 
 export const findUserByEmail = (email: string) =>
@@ -14,10 +13,7 @@ export const findUserByEmail = (email: string) =>
 
 export const verifyCredentials = (email: string, password: string) => {
   const user = findUserByEmail(email);
-  if (!user || user.password !== password) {
-    return null;
-  }
-
+  if (!user || user.password !== password) return null;
   return user;
 };
 
@@ -33,9 +29,18 @@ const buildSessionPayload = (user: User): AuthSession => ({
   expiresAt: Date.now() + SESSION_DURATION_HOURS * 60 * 60 * 1000,
 });
 
-export const persistSession = (session: AuthSession) => {
+
+// ----------------------
+// FIXED persistSession()
+// ----------------------
+export const persistSession = async (session: AuthSession) => {
   sessions.set(session.token, session);
-  cookies().set(SESSION_COOKIE, session.token, {
+
+  const cookieStore = await cookies(); // FIX: await needed
+
+  cookieStore.set({
+    name: SESSION_COOKIE,
+    value: session.token,
     httpOnly: true,
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
@@ -44,32 +49,45 @@ export const persistSession = (session: AuthSession) => {
   });
 };
 
-export const getSession = (): AuthSession | null => {
-  const token = cookies().get(SESSION_COOKIE)?.value;
+
+// ----------------------
+// FIX getSession()
+// ----------------------
+export const getSession = async (): Promise<AuthSession | null> => {
+  const cookieStore = await cookies(); // FIX
+  const token = cookieStore.get(SESSION_COOKIE)?.value;
+
   if (!token) return null;
+
   const session = sessions.get(token);
 
   if (!session || session.expiresAt < Date.now()) {
-    if (token) {
-      cookies().delete(SESSION_COOKIE);
-      sessions.delete(token);
-    }
+    cookieStore.delete(SESSION_COOKIE);
+    sessions.delete(token);
     return null;
   }
 
   return session;
 };
 
-export const destroySession = () => {
-  const token = cookies().get(SESSION_COOKIE)?.value;
+
+// ----------------------
+// FIX destroySession()
+// ----------------------
+export const destroySession = async () => {
+  const cookieStore = await cookies(); // FIX
+  const token = cookieStore.get(SESSION_COOKIE)?.value;
+
   if (token) {
     sessions.delete(token);
   }
-  cookies().delete(SESSION_COOKIE);
+
+  cookieStore.delete(SESSION_COOKIE);
 };
 
-export const createSession = (user: User) => {
+
+export const createSession = async (user: User) => {
   const session = buildSessionPayload(user);
-  persistSession(session);
+  await persistSession(session); // FIX: await required
   return session;
 };
