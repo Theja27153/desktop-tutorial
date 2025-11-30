@@ -6,11 +6,14 @@ import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Button } from "@/components/ui/Button";
 import { formatCurrency } from "@/lib/utils";
 
-export default function DashboardPage() {
-  const session = getSession();
-  if (!session) return null;
+export default async function DashboardPage() {
+  const session = await getSession();   // ✅ FIXED (await added)
 
-  const summary = getDashboardSummary(session.user.id);
+  if (!session || !session.user) {
+    return null;   // You can redirect to login if needed
+  }
+
+  const summary = getDashboardSummary(session.user.id);  // now works
   const invoices = listInvoices(session.user.id).slice(0, 4);
 
   return (
@@ -21,11 +24,14 @@ export default function DashboardPage() {
         <StatCard label="Approved" value={summary.approved} />
         <StatCard label="Paid" value={summary.paid} accent="green" />
       </section>
+
       <section className="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 className="text-xl font-semibold text-slate-900">Recent invoices</h2>
-            <p className="text-sm text-slate-500">Track submissions and statuses in real time.</p>
+            <p className="text-sm text-slate-500">
+              Track submissions and statuses in real time.
+            </p>
           </div>
           <div className="flex gap-3">
             <Link href="/portal/invoices/new">
@@ -38,6 +44,7 @@ export default function DashboardPage() {
             </Link>
           </div>
         </div>
+
         <div className="mt-6 overflow-x-auto">
           <table className="min-w-full text-sm">
             <thead>
@@ -49,6 +56,7 @@ export default function DashboardPage() {
                 <th className="pb-3 text-right">Total</th>
               </tr>
             </thead>
+
             <tbody className="divide-y divide-slate-100">
               {invoices.map((invoice) => (
                 <tr key={invoice.id} className="text-sm text-slate-700">
@@ -58,7 +66,9 @@ export default function DashboardPage() {
                   <td className="py-3">
                     <StatusBadge status={invoice.status} />
                   </td>
-                  <td className="py-3 text-right font-semibold">{formatCurrency(invoice.total)}</td>
+                  <td className="py-3 text-right font-semibold">
+                    {formatCurrency(invoice.total)}
+                  </td>
                 </tr>
               ))}
             </tbody>
