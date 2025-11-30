@@ -1,24 +1,23 @@
-import { NextResponse } from "next/server";
+import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
-import { updateWorkerProfile } from "@/lib/mock-db";
+import { ProfileEditor } from "@/components/portal/ProfileEditor";
 
-export async function POST(request: Request) {
-  const session = await getSession();   // ✅ FIX: await added
+export default async function ProfilePage() {
+  const session = await getSession();
 
-  if (!session || !session.user) {      // ✅ FIX: safe check
-    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  if (!session || !session.user) {
+    redirect("/login");
   }
 
-  const body = await request.json();
-
-  const updated = updateWorkerProfile(session.user.id, body);
-
-  if (!updated) {
-    return NextResponse.json(
-      { message: "Unable to update profile" },
-      { status: 400 }
-    );
-  }
-
-  return NextResponse.json({ user: updated });
+  return (
+    <div className="mx-auto max-w-2xl">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-slate-900">My Profile</h1>
+        <p className="mt-2 text-slate-600">
+          Manage your personal information and account settings.
+        </p>
+      </div>
+      <ProfileEditor initialData={session.user} />
+    </div>
+  );
 }

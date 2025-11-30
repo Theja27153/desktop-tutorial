@@ -19,6 +19,6 @@ export async function POST(request: Request) {
     );
   }
 
-  const session = createSession(user);
+  const session = await createSession(user);
   return NextResponse.json({ user: session.user });
 }

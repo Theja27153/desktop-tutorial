@@ -2,19 +2,53 @@ export interface User {
   id: string;
   name: string;
   email: string;
-  role: 'admin' | 'worker' | 'manager';
-  status: 'active' | 'inactive';
+  role: string;
+  department: string;
+  status?: 'active' | 'inactive';
   lastLogin?: string;
+  password?: string;
+}
+
+export interface AuthSession {
+  token: string;
+  user: User;
+  expiresAt: number;
+}
+
+export interface DashboardSummary {
+  totalInvoices: number;
+  pending: number;
+  approved: number;
+  paid: number;
+}
+
+export type InvoiceStatus = 'Paid' | 'Pending' | 'Approved' | 'Overdue';
+
+export interface InvoiceItem {
+  id: string;
+  description: string;
+  quantity: number;
+  rate: number;
+  amount: number;
 }
 
 export interface Invoice {
   id: string;
   number: string;
   clientName: string;
-  amount: number;
-  status: 'paid' | 'pending' | 'overdue';
+  projectName: string;
+  serviceCategory: string;
+  amount?: number; // Keep for backward compatibility if needed, or remove if fully replaced by total
+  subtotal: number;
+  gstRate: number;
+  total: number;
+  status: InvoiceStatus; // Updated status values to match mock-db
   date: string;
-  dueDate: string;
+  dueDate?: string;
+  items: InvoiceItem[];
+  notes?: string;
+  workerId?: string;
+  attachments?: string[];
 }
 
 export interface ServiceCategory {
