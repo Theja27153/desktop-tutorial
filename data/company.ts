@@ -1,11 +1,6 @@
-import {
-  LeadershipProfile,
-  ProjectCaseStudy,
-  TimelineEntry,
-  ValueProp,
-} from "@/types";
+import { ValueProposition, CaseStudy, TimelineEntry, LeadershipProfile } from "@/types";
 
-export const valuePropositions: ValueProp[] = [
+export const valuePropositions: ValueProposition[] = [
   {
     id: "multi-sector",
     title: "Multi-sector command",
@@ -32,7 +27,7 @@ export const valuePropositions: ValueProp[] = [
   },
 ];
 
-export const caseStudies: ProjectCaseStudy[] = [
+export const caseStudies: CaseStudy[] = [
   {
     id: "smart-industrial-park",
     title: "Smart Industrial Park Enablement",
@@ -100,24 +95,10 @@ export const companyTimeline: TimelineEntry[] = [
 
 export const leadershipTeam: LeadershipProfile[] = [
   {
-    id: "padma-reddy",
-    name: "Padma Reddy",
-    title: "Founder & Managing Director",
-    bio: "Civil engineer turned entrepreneur overseeing strategy and partnerships across all verticals.",
-    focus: "Growth & Governance",
-  },
-  {
-    id: "vikram-sharma",
-    name: "Vikram Sharma",
-    title: "Director, Operations & Franchise",
-    bio: "Leads multi-city rollout programs and franchise operations with an eye on quality metrics.",
-    focus: "Operational Excellence",
-  },
-  {
-    id: "meera-kumar",
-    name: "Meera Kumar",
-    title: "Head of Digital & Data",
-    bio: "Drives the analytics practice, digital studio, and data-driven decision support for clients.",
-    focus: "Technology & Insights",
+    id: "sai-theja-thallam",
+    name: "Sai Theja Thallam",
+    title: "Founder & Owner",
+    bio: "Sai Theja Thallam is the driving force behind Padmavathi Constructions, transforming it from a regional construction firm into a diversified commercial powerhouse. With a vision that bridges local expertise and global standards, Sai has expanded the company's portfolio to include data services, hospitality, and digital media. His leadership is defined by a commitment to operational excellence and a 'governance-first' approach, ensuring that every project—whether a high-rise in Karimnagar or a data analytics pod—delivers measurable value. Splitting his time between India and the US, Sai brings a unique cross-cultural perspective to business scaling and strategic partnerships.",
+    focus: "Strategy & Global Operations",
   },
 ];

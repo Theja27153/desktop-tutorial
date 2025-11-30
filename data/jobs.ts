@@ -4,8 +4,9 @@ export const jobPostings: JobPosting[] = [
   {
     id: "site-engineer",
     title: "Site Engineer",
-    location: "Karimnagar",
     department: "Construction Support",
+    location: "Karimnagar",
+    type: "Full-time",
     description:
       "Coordinate civil works, vendor output, and safety documentation across multiple active sites.",
     responsibilities: [
@@ -20,6 +21,7 @@ export const jobPostings: JobPosting[] = [
     title: "Operations Coordinator",
     location: "Karimnagar",
     department: "Central Operations",
+    type: "Full-time",
     description:
       "Run the command center for franchise and restaurant projects with a focus on predictable delivery.",
     responsibilities: [
@@ -34,6 +36,7 @@ export const jobPostings: JobPosting[] = [
     title: "Data Analyst",
     location: "Remote",
     department: "Data Services",
+    type: "Full-time",
     description:
       "Build clean data models, dashboards, and insights for clients across sectors.",
     responsibilities: [
@@ -48,6 +51,7 @@ export const jobPostings: JobPosting[] = [
     title: "Restaurant Operations Manager",
     location: "Karimnagar",
     department: "Restaurant Operations",
+    type: "Full-time",
     description:
       "Lead multi-outlet restaurant operations, staffing, and guest experience improvements.",
     responsibilities: [
@@ -62,6 +66,7 @@ export const jobPostings: JobPosting[] = [
     title: "Digital Marketing Executive",
     location: "Remote",
     department: "Digital Content & Media",
+    type: "Full-time",
     description:
       "Execute campaign calendars, manage performance data, and support brand storytelling deliverables.",
     responsibilities: [

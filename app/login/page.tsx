@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
+import { Toast } from "@/components/ui/Toast";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -13,6 +14,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("build@123");
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -30,6 +32,7 @@ export default function LoginPage() {
     } else {
       const payload = await response.json();
       setError(payload.message ?? "Invalid credentials");
+      setShowToast(true);
     }
   };
 
@@ -39,7 +42,7 @@ export default function LoginPage() {
     <div className="grid min-h-screen md:grid-cols-2">
       <div className="relative hidden flex-col justify-between bg-[var(--color-burgundy)] p-10 text-white md:flex">
         <div>
-          <Image src="/logo.svg" width={64} height={64} alt="Padmavathi logo" />
+          <Image src="/logo.png" width={64} height={64} alt="Padmavathi logo" />
           <p className="mt-6 text-3xl font-semibold leading-snug">
             “Building, managing, and scaling multi-sector businesses with trust and technology.”
           </p>
@@ -52,7 +55,7 @@ export default function LoginPage() {
       <div className="flex flex-col justify-center bg-white px-6 py-12 sm:px-12">
         <div className="mx-auto w-full max-w-md space-y-6">
           <div className="flex flex-col items-center text-center">
-            <Image src="/logo.svg" width={56} height={56} alt="Padmavathi logo" className="md:hidden" />
+            <Image src="/logo.png" width={56} height={56} alt="Padmavathi logo" className="md:hidden" />
             <p className="mt-4 text-sm uppercase tracking-[0.35em] text-slate-500">
               Worker portal
             </p>
@@ -111,6 +114,13 @@ export default function LoginPage() {
           </div>
         </div>
       </div>
+      {showToast && (
+        <Toast
+          message={error}
+          type="error"
+          onClose={() => setShowToast(false)}
+        />
+      )}
     </div>
   );
 }

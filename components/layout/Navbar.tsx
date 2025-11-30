@@ -13,12 +13,9 @@ export const Navbar = () => (
   <header className="sticky top-0 z-40 border-b border-slate-100 bg-white/90 backdrop-blur">
     <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
       <Link href="/" className="flex items-center gap-3">
-        <Image src="/logo.svg" alt="Padmavathi Constructions" width={42} height={42} />
+        <Image src="/logo.png" alt="Padmavathi Constructions" width={42} height={42} />
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">
-            Padmavathi
-          </p>
-          <p className="text-lg font-semibold text-slate-900">Constructions</p>
+          <p className="font-michroma text-lg text-[var(--color-burgundy)]">PADMAVATHI CONSTRUCTIONS</p>
         </div>
       </Link>
       <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">

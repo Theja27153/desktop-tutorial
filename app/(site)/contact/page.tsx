@@ -37,12 +37,14 @@ export default function ContactPage() {
           <Card>
             <h3 className="text-xl font-semibold text-slate-900">Visit us</h3>
             <p className="mt-2 text-sm text-slate-600">
-              Plot 14, Housing Board Colony
+              2-10-879/10 S.S Residency
               <br />
-              Karimnagar, Telangana 505001
+              Jyothinagar Karimnagar
             </p>
             <p className="mt-4 text-sm text-slate-600">
-              Phone: +91 90000 12345
+              India: +91 83743 66153
+              <br />
+              USA: +1 209-453-1730
               <br />
               Email: hello@padmavathi.co
             </p>

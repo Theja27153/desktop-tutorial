@@ -14,7 +14,7 @@ export const Footer = () => (
     <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-[2fr,1fr,1fr]">
       <div className="space-y-4">
         <div className="flex items-center gap-3">
-          <Image src="/logo.svg" alt="Padmavathi logo" width={48} height={48} />
+          <Image src="/logo.png" alt="Padmavathi logo" width={48} height={48} />
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Padmavathi</p>
             <p className="text-xl font-semibold text-slate-900">Constructions</p>
@@ -25,7 +25,7 @@ export const Footer = () => (
           2018.
         </p>
         <p className="text-xs text-slate-500">
-          Plot 14, Housing Board, Karimnagar, Telangana, India • +91 90000 12345 •
+          2-10-879/10 S.S Residency, Jyothinagar Karimnagar • +91 83743 66153 •
           hello@padmavathi.co
         </p>
       </div>

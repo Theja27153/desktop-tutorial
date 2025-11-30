@@ -38,7 +38,7 @@ export default function HomePage() {
             <Card>
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <Image src="/logo.svg" alt="Padmavathi logo" width={60} height={60} />
+                  <Image src="/logo.png" alt="Padmavathi logo" width={60} height={60} />
                   <div>
                     <p className="text-sm uppercase tracking-[0.35em] text-slate-500">
                       Since 2018

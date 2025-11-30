@@ -15,6 +15,11 @@
   --color-green: var(--color-green);
   --font-sans: var(--font-sans);
   --font-display: var(--font-display);
+  --font-michroma: var(--font-michroma);
+}
+
+.font-michroma {
+  font-family: var(--font-michroma), sans-serif;
 }
 
 body {
