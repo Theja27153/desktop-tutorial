@@ -26,7 +26,7 @@ export default function ContactPage() {
           <SectionIntro
             eyebrow="Business Enquiry"
             title="Send us a note"
-            description="Use the form or email hello@padmavathi.co"
+            description="Use the form or email padmavathiconstructions18@gmail.com"
             align="left"
           />
           <div className="mt-6">
@@ -46,7 +46,7 @@ export default function ContactPage() {
               <br />
               USA: +1 209-453-1730
               <br />
-              Email: hello@padmavathi.co
+              Email: padmavathiconstructions18@gmail.com
             </p>
           </Card>
           <Card>
@@ -70,6 +70,10 @@ export default function ContactPage() {
               <br />
               Careers: talent@padmavathi.co
             </p>
+            <div className="mt-4">
+              <p className="mb-2 text-sm font-semibold text-slate-900">Scan to chat</p>
+              <img src="/qrcode.jpg" alt="WhatsApp QR Code" className="h-32 w-32 rounded-lg border border-slate-200" />
+            </div>
           </Card>
         </div>
       </section>
