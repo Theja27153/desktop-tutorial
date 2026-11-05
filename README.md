@@ -6,7 +6,7 @@ A Next.js app with two parts: a public company website and a login-protected wor
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
-[![CI](https://github.com/Theja27153/desktop-tutorial/actions/workflows/ci.yml/badge.svg)](https://github.com/Theja27153/desktop-tutorial/actions/workflows/ci.yml)
+[![CI](https://github.com/Theja27153/padmavathi-constructions/actions/workflows/ci.yml/badge.svg)](https://github.com/Theja27153/padmavathi-constructions/actions/workflows/ci.yml)
 
 **Live demo:** <YOUR_DEMO_URL>
 

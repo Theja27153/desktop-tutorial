@@ -38,11 +38,10 @@ export interface Invoice {
   clientName: string;
   projectName: string;
   serviceCategory: string;
-  amount?: number; // Keep for backward compatibility if needed, or remove if fully replaced by total
   subtotal: number;
   gstRate: number;
   total: number;
-  status: InvoiceStatus; // Updated status values to match mock-db
+  status: InvoiceStatus;
   date: string;
   dueDate?: string;
   items: InvoiceItem[];
