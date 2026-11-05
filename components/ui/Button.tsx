@@ -50,5 +50,3 @@ export const Button = ({
     {rightIcon}
   </button>
 );
-
-// TODO: Add loading state  

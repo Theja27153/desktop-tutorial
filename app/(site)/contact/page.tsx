@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SectionIntro } from "@/components/ui/SectionIntro";
 import { Card } from "@/components/ui/Card";
 import { ServiceEnquiryForm } from "@/components/forms/ServiceEnquiryForm";
@@ -72,7 +73,7 @@ export default function ContactPage() {
             </p>
             <div className="mt-4">
               <p className="mb-2 text-sm font-semibold text-slate-900">Scan to chat</p>
-              <img src="/qrcode.jpg" alt="WhatsApp QR Code" className="h-32 w-32 rounded-lg border border-slate-200" />
+              <Image src="/qrcode.jpg" alt="WhatsApp QR code" width={128} height={128} className="h-32 w-32 rounded-lg border border-slate-200" />
             </div>
           </Card>
         </div>
