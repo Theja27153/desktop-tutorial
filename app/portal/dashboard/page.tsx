@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { formatCurrency } from "@/lib/utils";
 
 export default async function DashboardPage() {
-  const session = await getSession();   // ✅ FIXED (await added)
+  const session = await getSession();
 
   if (!session || !session.user) {
     return null;   // You can redirect to login if needed

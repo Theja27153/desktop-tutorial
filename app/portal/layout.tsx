@@ -5,7 +5,7 @@ import { PortalNav } from "@/components/layout/PortalNav";
 import { LogoutButton } from "@/components/layout/LogoutButton";
 
 export default async function PortalLayout({ children }: { children: ReactNode }) {
-  const session = await getSession();   // ✅ FIXED (added await)
+  const session = await getSession();
 
   if (!session || !session.user) {
     redirect("/login?reason=unauthorized");

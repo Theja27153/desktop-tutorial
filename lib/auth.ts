@@ -29,14 +29,10 @@ const buildSessionPayload = (user: User): AuthSession => ({
   expiresAt: Date.now() + SESSION_DURATION_HOURS * 60 * 60 * 1000,
 });
 
-
-// ----------------------
-// FIXED persistSession()
-// ----------------------
 export const persistSession = async (session: AuthSession) => {
   sessions.set(session.token, session);
 
-  const cookieStore = await cookies(); // FIX: await needed
+  const cookieStore = await cookies();
 
   cookieStore.set({
     name: SESSION_COOKIE,
@@ -49,12 +45,8 @@ export const persistSession = async (session: AuthSession) => {
   });
 };
 
-
-// ----------------------
-// FIX getSession()
-// ----------------------
 export const getSession = async (): Promise<AuthSession | null> => {
-  const cookieStore = await cookies(); // FIX
+  const cookieStore = await cookies();
   const token = cookieStore.get(SESSION_COOKIE)?.value;
 
   if (!token) return null;
@@ -70,12 +62,8 @@ export const getSession = async (): Promise<AuthSession | null> => {
   return session;
 };
 
-
-// ----------------------
-// FIX destroySession()
-// ----------------------
 export const destroySession = async () => {
-  const cookieStore = await cookies(); // FIX
+  const cookieStore = await cookies();
   const token = cookieStore.get(SESSION_COOKIE)?.value;
 
   if (token) {
@@ -85,9 +73,8 @@ export const destroySession = async () => {
   cookieStore.delete(SESSION_COOKIE);
 };
 
-
 export const createSession = async (user: User) => {
   const session = buildSessionPayload(user);
-  await persistSession(session); // FIX: await required
+  await persistSession(session);
   return session;
 };
